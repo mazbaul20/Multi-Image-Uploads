@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class MultiImage extends Model
 {
-    //
+    protected $guarded = [];
 }
