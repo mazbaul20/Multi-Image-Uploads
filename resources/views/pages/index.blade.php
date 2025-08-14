@@ -25,16 +25,18 @@
                             </tr>
                         </thead>
                         <tbody id="tableList">
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img src="https://img.freepik.com/free-photo/bright-yellow-truck-with-red-trailer-side-it_1340-32505.jpg" alt="Employee Image" class="img-fluid rounded" style="width: 50px; height: 50px;">
-                                </td>
-                                <td>
-                                    <a href="" class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
+        @foreach ($images as $key=>$image)
+            <tr>
+                <td>{{ $key+1 }}</td>
+                <td>
+                    <img src="{{ asset($image->multi_image) }}" alt="Employee Image" class="img-fluid rounded" style="width: 50px; height: 50px;">
+                </td>
+                <td>
+                    <a href="" class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+            </tr>
+        @endforeach
 
                         </tbody>
                     </table>

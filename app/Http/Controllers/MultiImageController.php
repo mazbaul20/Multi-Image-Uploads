@@ -10,7 +10,8 @@ class MultiImageController extends Controller
 {
     public function index()
     {
-        return view('pages.index');
+        $images = MultiImage::latest()->get();
+        return view('pages.index',compact('images'));
     }//end mehtod
 
     public function store(Request $request){
@@ -19,8 +20,9 @@ class MultiImageController extends Controller
 
         foreach($images as $image){
             $t = time();
+            $uniqe = uniqid();
             $fileName = $image->getClientOriginalExtension();
-            $img_name = "{$t}-{$fileName}";
+            $img_name = "{$uniqe}-{$t}-{$fileName}";
             $img_url = 'uploads/multi/'.$img_name;
 
             $image->move(public_path('uploads/multi'), $img_name);
