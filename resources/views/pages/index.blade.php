@@ -33,9 +33,30 @@
                 </td>
                 <td>
                     <a href="" class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                    <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal{{$image->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
+
+<!-- Delete Modal HTML -->
+<div class="modal fade" id="deleteEmployeeModal{{$image->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3 class=" mt-3 text-warning">Delete !</h3>
+                <p class="mb-3">Once delete, you can't get it back.</p>
+                <input class="" hidden id="deleteID"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delete-modal-close" class="btn shadow-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="{{ route('delete.multi.image',$image->id) }}" id="confirmDelete" class="btn shadow-sm btn-danger" >Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
         @endforeach
 
                         </tbody>
@@ -105,26 +126,6 @@
         </div>
     </div>
 
-    <!-- Delete Modal HTML -->
-    <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3 class=" mt-3 text-warning">Delete !</h3>
-                    <p class="mb-3">Once delete, you can't get it back.</p>
-                    <input class="" hidden id="deleteID"/>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="delete-modal-close" class="btn shadow-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button onclick="itemDelete()" type="button" id="confirmDelete" class="btn shadow-sm btn-danger" >Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- <script>
         let tableData = $('#tableData');

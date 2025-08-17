@@ -36,4 +36,14 @@ class MultiImageController extends Controller
         $data = ['status'=>'success','message'=>'Images uploaded successfully'];
         return redirect()->back()->with($data);
     }//end method
+
+    public function DeleteMultiImage(Request $request, $id){
+        $image = MultiImage::findOrFail($id);
+
+        if(file_exists(public_path($image->multi_image))){
+            unlink(public_path($image->multi_image));
+        }
+        $image->delete();
+        return back()->with('success','Image deleted successfully');
+    }//end method
 }

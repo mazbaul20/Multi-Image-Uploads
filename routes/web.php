@@ -9,3 +9,4 @@ use App\Http\Controllers\MultiImageController;
 
 Route::get('/',[MultiImageController::class, 'index'])->name('index.page');
 Route::post('/store/multi/image', [MultiImageController::class, 'store'])->name('store.multi.image');
+Route::get('/delete/multi/image/{id}', [MultiImageController::class, 'DeleteMultiImage'])->name('delete.multi.image');
