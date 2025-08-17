@@ -33,8 +33,8 @@ class MultiImageController extends Controller
             ]);
         }
 
-        $data = ['status'=>'success','message'=>'Images uploaded successfully'];
-        return redirect()->back()->with($data);
+        flash()->success('Image uploaded successfully!');
+        return redirect()->back();
     }//end method
 
     public function DeleteMultiImage(Request $request, $id){
@@ -44,6 +44,7 @@ class MultiImageController extends Controller
             unlink(public_path($image->multi_image));
         }
         $image->delete();
-        return back()->with('success','Image deleted successfully');
+        flash()->success('Image deleted successfully!');
+        return back();
     }//end method
 }
